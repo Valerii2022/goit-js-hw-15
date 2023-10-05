@@ -15,12 +15,20 @@ create.addEventListener("click", () =>
 destroy.addEventListener("click", destroyBoxes);
 
 function createBoxes(amount) {
-  inputValue.children[0].value = "";
-  console.log(amount);
-  list.insertAdjacentHTML(
-    "beforeend",
-    `<p style="color:${getRandomHexColor()}">hi</p>`
-  );
+  let boxesList = [];
+  let sizes = 30;
+
+  for (let i = 0; i < Number(amount); i += 1) {
+    boxesList.push(
+      `<div style="background-color: ${getRandomHexColor()}; width: ${sizes}px; height: ${sizes}px"></div>`
+    );
+    sizes += 10;
+  }
+
+  list.insertAdjacentHTML("beforeend", boxesList.join(""));
 }
 
-function destroyBoxes() {}
+function destroyBoxes() {
+  inputValue.children[0].value = "";
+  list.innerHTML = "";
+}
