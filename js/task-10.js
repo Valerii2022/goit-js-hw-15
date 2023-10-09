@@ -9,10 +9,16 @@ const createRef = document.querySelector("[data-create]");
 const destroyRef = document.querySelector("[data-destroy]");
 const listRef = document.querySelector("#boxes");
 
-createRef.addEventListener("click", () =>
-  createBoxes(inputValueRef.firstElementChild.value)
-);
-destroyRef.addEventListener("click", destroyBoxes);
+createRef.addEventListener("click", handleCreateBtnClick);
+destroyRef.addEventListener("click", handleDestroyBtnClick);
+
+function handleCreateBtnClick() {
+  createBoxes(inputValueRef.firstElementChild.value);
+}
+
+function handleDestroyBtnClick() {
+  destroyBoxes();
+}
 
 function createBoxes(amount) {
   let boxesList = [];
