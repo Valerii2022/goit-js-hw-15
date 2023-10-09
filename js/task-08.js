@@ -4,12 +4,13 @@ formRef.addEventListener("submit", handleFormSubmit);
 
 function handleFormSubmit(e) {
   e.preventDefault();
-  if (e.target.elements[0].value === "" || e.target.elements[1].value === "") {
+  const { email, password } = e.target.elements;
+  if (email.value === "" || password.value === "") {
     return alert("All fields must be filled");
   }
   const userInfo = {
-    [e.target.elements[0].name]: e.target.elements[0].value,
-    [e.target.elements[1].name]: e.target.elements[1].value,
+    email: email.value,
+    password: password.value,
   };
   console.log(userInfo);
   formRef.reset();
